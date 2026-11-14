@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Карточки товаров, которые продают</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1115;color:#e8e6e1;line-height:1.55}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px}
+header{text-align:center;padding:56px 0 40px}
+header h1{font-size:clamp(28px,5vw,44px);background:linear-gradient(90deg,#f5c451,#e88f3c);-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{color:#9a9a9a;margin-top:10px;font-size:18px}
+.stats{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.stats span{background:#1a1d24;border:1px solid #2a2e38;border-radius:20px;padding:8px 18px;font-size:14px;color:#c9c7c2}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:40px 0}
+.services div{background:#161920;border:1px solid #262b35;border-radius:14px;padding:18px}
+.services b{color:#f5c451}
+.case{margin:64px 0}
+.case-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.case-tag{background:#2b2417;color:#f5c451;border-radius:8px;padding:4px 12px;font-size:13px;font-weight:600}
+.case-style{color:#777;font-size:13px;margin-left:auto}
+h2{font-size:26px;margin:6px 0 8px}
+.case-desc{color:#b5b3ae;max-width:760px;margin-bottom:18px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;cursor:zoom-in;transition:transform .2s;border:1px solid #262b35}
+.gallery img:hover{transform:scale(1.02)}
+.seo-box{background:#14161c;border:1px dashed #3a3f4a;border-radius:12px;padding:16px 18px;margin-top:18px;font-size:14px}
+.seo-box h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#f5c451;margin-bottom:8px}
+.seo-box p{margin:4px 0;color:#c9c7c2}
+footer{text-align:center;padding:48px 0 64px;border-top:1px solid #22262e;margin-top:60px}
+footer a{display:inline-block;background:#f5c451;color:#111;font-weight:700;padding:14px 30px;border-radius:30px;text-decoration:none}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out}
+#lb img{max-width:94vw;max-height:94vh;border-radius:8px}
+</style></head><body><div class="wrap">
+<header>
+  <h1>Карточки товаров, которые продают</h1>
+  <p>Дизайн карточек для маркетплейсов: Wildberries, Ozon, Яндекс Маркет</p>
+  <div class="stats"><span>5 кейсов</span><span>5 стилей</span><span>19 карточек</span></div>
+</header>
+<div class="services">
+  <div><b>Карточка товара</b><br>Обложка, преимущества, характеристики — полный комплект под ваш товар</div>
+  <div><b>Текстовый пакет</b><br>Описание, SEO-ключи, заголовки для ВБ и Озона — к каждой карточке</div>
+  <div><b>Стиль под нишу</b><br>Палитра и типографика под категорию: электроника, подарки, wellness</div>
+</div>
+
+<section class="case" id="case1">
+  <div class="case-head"><span class="case-tag">Кейс №1</span><h2>Геймпад Sony DualSense</h2><span class="case-style">Гейминг · контрастный</span></div>
+  <p class="case-desc">Беспроводной геймпад DualSense для PS5/PS5 Pro: адаптивные триггеры, тактильный отклик, микрофон и динамик, зарядка USB-C. Три карточки: обложка, «5 причин выбрать», характеристики.</p>
+  <div class="gallery"><img src="img/case1/1.png" alt="Кейс 1: Геймпад Sony DualSense — карточка 1" loading="lazy" onclick="lb(this)">
+<img src="img/case1/2.png" alt="Кейс 1: Геймпад Sony DualSense — карточка 2" loading="lazy" onclick="lb(this)">
+<img src="img/case1/3.png" alt="Кейс 1: Геймпад Sony DualSense — карточка 3" loading="lazy" onclick="lb(this)"></div>
+  <div class="seo-box">
+    <h3>Для маркетплейсов</h3>
+    <p><b>SEO-ключи:</b> dualsense, геймпад ps5, дуалсенс купить, джойстик плейстейшен 5, беспроводной контроллер sony, геймпад dualsense оригинал</p>
+    <p><b>Заголовок Wildberries:</b> Геймпад Sony DualSense беспроводной для PlayStation 5, белый, оригинал</p>
+    <p><b>Заголовок Ozon:</b> Геймпад Sony DualSense беспроводной для PlayStation 5 / PC — адаптивные триггеры, тактильный отклик, белый</p>
+  </div>
+</section>
+
+<section class="case" id="case2">
+  <div class="case-head"><span class="case-tag">Кейс №2</span><h2>Наушники Sony PULSE Explore</h2><span class="case-style">Гейминг · тёмно-синий</span></div>
+  <p class="case-desc">Беспроводные игровые наушники с Lossless-звуком: до 5 часов работы, 15 часов с кейсом, быстрая зарядка. Работают с PS5, ПК и мобильными.</p>
+  <div class="gallery"><img src="img/case2/1.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 1" loading="lazy" onclick="lb(this)">
+<img src="img/case2/2.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 2" loading="lazy" onclick="lb(this)">
+<img src="img/case2/3.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 3" loading="lazy" onclick="lb(this)">
+<img src="img/case2/4.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 4" loading="lazy" onclick="lb(this)">
+<img src="img/case2/5.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 5" loading="lazy" onclick="lb(this)"></div>
+  <div class="seo-box">
+    <h3>Для маркетплейсов</h3>
+    <p><b>SEO-ключи:</b> наушники sony pulse explore, беспроводные наушники ps5, игровые наушники с микрофоном, pulse explore купить, наушники для плейстейшен 5</p>
+    <p><b>Заголовок Wildberries:</b> Наушники Sony PULSE Explore беспроводные для PlayStation 5 и ПК, белый</p>
+    <p><b>Заголовок Ozon:</b> Наушники Sony PULSE Explore беспроводные — Lossless-звук, для PS5, ПК и мобильных, белый</p>
+  </div>
+</section>
+
+<section class="case" id="case3">
+  <div class="case-head"><span class="case-tag">Кейс №3</span><h2>PlayStation 5 Pro</h2><span class="case-style">Гейминг · светлый</span></div>
+  <p class="case-desc">Консоль PS5 Pro Digital Edition: 2 ТБ SSD, PSSR-апскейлинг, 4K 120 Гц, Wi-Fi 7, +67% к мощности GPU. В коробке консоль, DualSense, кабели и документация.</p>
+  <div class="gallery"><img src="img/case3/1.png" alt="Кейс 3: PlayStation 5 Pro — карточка 1" loading="lazy" onclick="lb(this)">
+<img src="img/case3/2.png" alt="Кейс 3: PlayStation 5 Pro — карточка 2" loading="lazy" onclick="lb(this)">
+<img src="img/case3/3.png" alt="Кейс 3: PlayStation 5 Pro — карточка 3" loading="lazy" onclick="lb(this)">
+<img src="img/case3/4.png" alt="Кейс 3: PlayStation 5 Pro — карточка 4" loading="lazy" onclick="lb(this)">
+<img src="img/case3/5.png" alt="Кейс 3: PlayStation 5 Pro — карточка 5" loading="lazy" onclick="lb(this)"></div>
+  <div class="seo-box">
+    <h3>Для маркетплейсов</h3>
+    <p><b>SEO-ключи:</b> playstation 5 pro, пс5 про, консоль sony ps5 pro, плейстейшен 5 про digital, ps5 pro 2tb, купить пс5 про</p>
+    <p><b>Заголовок Wildberries:</b> Игровая консоль Sony PlayStation 5 Pro Digital, 2 ТБ SSD, белый</p>
+    <p><b>Заголовок Ozon:</b> Игровая консоль Sony PlayStation 5 Pro Digital Edition 2 ТБ — PSSR, 4K 120 Гц, Wi-Fi 7, белый</p>
+  </div>
+</section>
+
+<section class="case" id="case4">
+  <div class="case-head"><span class="case-tag">Кейс №4</span><h2>Массажёр Fujimo IN·YANG F158</h2><span class="case-style">Wellness · кремово-оливковый</span></div>
+  <p class="case-desc">Массажёр для ног 2-в-1: роликовый массаж стоп (3 акупунктурных барабана) и воздушно-компрессионный охват 360°, тепловая терапия в 2 зонах, 3 программы и 3 уровня интенсивности, 65 Вт.</p>
+  <div class="gallery"><img src="img/case4/1.png" alt="Кейс 4: Массажёр Fujimo IN·YANG F158 — карточка 1" loading="lazy" onclick="lb(this)">
+<img src="img/case4/2.png" alt="Кейс 4: Массажёр Fujimo IN·YANG F158 — карточка 2" loading="lazy" onclick="lb(this)">
+<img src="img/case4/3.png" alt="Кейс 4: Массажёр Fujimo IN·YANG F158 — карточка 3" loading="lazy" onclick="lb(this)"></div>
+  <div class="seo-box">
+    <h3>Для маркетплейсов</h3>
+    <p><b>SEO-ключи:</b> массажер для ног, массажер стоп и икр, fujimo in yang f158, роликовый массажер для ног, компрессионный массажер ног, массажер с подогревом</p>
+    <p><b>Заголовок Wildberries:</b> Массажер для ног Fujimo IN·YANG F158, стопы и икры, роликовый и компрессионный</p>
+    <p><b>Заголовок Ozon:</b> Массажер для ног Fujimo IN·YANG F158 2-в-1 — роликовый и воздушно-компрессионный массаж, подогрев, 65 Вт</p>
+  </div>
+</section>
+
+<section class="case" id="case5">
+  <div class="case-head"><span class="case-tag">Кейс №5</span><h2>Коньячный набор Златоуст</h2><span class="case-style">Подарок · чёрно-золотой</span></div>
+  <p class="case-desc">Коньячный набор из Златоуста: штоф и три бокала с фианитами, чешское стекло, ручная гравюра и золочение. Гравировка до 64 символов по запросу, подарочная упаковка, артикул zlat-1078.</p>
+  <div class="gallery"><img src="img/case5/1.png" alt="Кейс 5: Коньячный набор Златоуст — карточка 1" loading="lazy" onclick="lb(this)">
+<img src="img/case5/2.png" alt="Кейс 5: Коньячный набор Златоуст — карточка 2" loading="lazy" onclick="lb(this)">
+<img src="img/case5/3.png" alt="Кейс 5: Коньячный набор Златоуст — карточка 3" loading="lazy" onclick="lb(this)"></div>
+  <div class="seo-box">
+    <h3>Для маркетплейсов</h3>
+    <p><b>SEO-ключи:</b> коньячный набор, набор для коньяка златоуст, штоф и бокалы для коньяка, подарок мужчине ручная работа, бокалы с гравировкой, коньячный набор подарок</p>
+    <p><b>Заголовок Wildberries:</b> Коньячный набор: штоф и 3 бокала с фианитами, Златоуст, ручная работа</p>
+    <p><b>Заголовок Ozon:</b> Коньячный набор из Златоуста — штоф и 3 бокала с фианитами, чешское стекло, ручная гравюра, гравировка на подарок</p>
+  </div>
+</section>
+<footer>
+  <p style="margin-bottom:16px;color:#9a9a9a">Нужна такая же карточка для вашего товара?</p>
+  <a href="https://t.me/yan154rus" target="_blank">Написать в Telegram @yan154rus</a>
+</footer>
+</div>
+<div id="lb" onclick="this.style.display='none'"><img id="lbimg"></div>
+<script>
+function lb(el){document.getElementById('lbimg').src=el.src;document.getElementById('lb').style.display='flex';}
+</script>
+</body></html>

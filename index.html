@@ -1,127 +1,256 @@
 <!DOCTYPE html>
-<html lang="ru"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Карточки товаров, которые продают</title>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфолио — карточки для маркетплейсов</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1115;color:#e8e6e1;line-height:1.55}
-.wrap{max-width:1100px;margin:0 auto;padding:24px 20px}
-header{text-align:center;padding:56px 0 40px}
-header h1{font-size:clamp(28px,5vw,44px);background:linear-gradient(90deg,#f5c451,#e88f3c);-webkit-background-clip:text;background-clip:text;color:transparent}
-header p{color:#9a9a9a;margin-top:10px;font-size:18px}
-.stats{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
-.stats span{background:#1a1d24;border:1px solid #2a2e38;border-radius:20px;padding:8px 18px;font-size:14px;color:#c9c7c2}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:40px 0}
-.services div{background:#161920;border:1px solid #262b35;border-radius:14px;padding:18px}
-.services b{color:#f5c451}
-.case{margin:64px 0}
-.case-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.case-tag{background:#2b2417;color:#f5c451;border-radius:8px;padding:4px 12px;font-size:13px;font-weight:600}
-.case-style{color:#777;font-size:13px;margin-left:auto}
-h2{font-size:26px;margin:6px 0 8px}
-.case-desc{color:#b5b3ae;max-width:760px;margin-bottom:18px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-.gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;cursor:zoom-in;transition:transform .2s;border:1px solid #262b35}
-.gallery img:hover{transform:scale(1.02)}
-.seo-box{background:#14161c;border:1px dashed #3a3f4a;border-radius:12px;padding:16px 18px;margin-top:18px;font-size:14px}
-.seo-box h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#f5c451;margin-bottom:8px}
-.seo-box p{margin:4px 0;color:#c9c7c2}
-footer{text-align:center;padding:48px 0 64px;border-top:1px solid #22262e;margin-top:60px}
-footer a{display:inline-block;background:#f5c451;color:#111;font-weight:700;padding:14px 30px;border-radius:30px;text-decoration:none}
-#lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out}
-#lb img{max-width:94vw;max-height:94vh;border-radius:8px}
-</style></head><body><div class="wrap">
+  :root{
+    --sony:#0070D1; --deep:#00439C; --dark:#001B3F;
+    --bg:#F2F7FC; --ink:#12233F; --muted:#5A6E8C;
+    --wb1:#CB11AB; --wb2:#8A0E9B; --oz:#005BFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  header{background:linear-gradient(120deg,var(--dark) 0%,var(--deep) 100%);color:#fff;padding:56px 20px 48px;text-align:center}
+  header h1{font-size:clamp(26px,4.5vw,44px);letter-spacing:.5px;text-transform:uppercase}
+  header h1 .acc{color:#4DA9FF}
+  header p{margin-top:14px;font-size:clamp(14px,2vw,18px);color:#BCD4F5}
+  header .counters{margin-top:18px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  header .counters span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:8px 18px;border-radius:999px;font-size:14px}
+  main{max-width:1200px;margin:0 auto;padding:40px 20px}
+  .case{margin-bottom:64px}
+  .badge{display:inline-block;background:var(--deep);color:#fff;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;border-radius:999px;margin-bottom:14px}
+  .case-title{font-size:clamp(22px,3vw,32px);margin-bottom:22px}
+  .case-title b{color:var(--sony);font-weight:800}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{background:#fff;border:1px solid #DCE7F5;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 4px 18px rgba(0,67,156,.08);transition:transform .18s, box-shadow .18s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,67,156,.16)}
+  .card img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;background:#EAF1FA}
+  .card figcaption{padding:12px 14px;font-size:14px;font-weight:600;color:var(--muted);border-top:1px solid #EAF1FA}
+  .seo{margin-top:26px;background:#EDF5FE;border-left:4px solid var(--sony);border-radius:0 12px 12px 0;padding:18px 20px;font-size:15px;line-height:1.55}
+  .seo-title{font-weight:800;color:var(--deep);margin-bottom:8px;letter-spacing:.4px;text-transform:uppercase;font-size:13px}
+  .seo-label{font-weight:700;color:var(--deep)}
+  .seo-line{margin-top:8px;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+  .mp{display:inline-block;color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.5px;white-space:nowrap}
+  .mp.wb{background:linear-gradient(90deg,var(--wb2),var(--wb1))}
+  .mp.oz{background:var(--oz)}
+  .seo-val{flex:1;min-width:220px}
+  footer{background:linear-gradient(120deg,var(--dark),var(--deep));color:#fff;text-align:center;padding:44px 20px}
+  footer .tg{display:inline-block;background:var(--sony);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 34px;border-radius:999px;transition:background .2s}
+  footer .tg:hover{background:#2E8AE6}
+  footer p{margin-top:14px;color:#BCD4F5;font-size:14px}
+  /* лайтбокс */
+  .lb{position:fixed;inset:0;background:rgba(0,10,30,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
+  .lb.open{display:flex}
+  .lb img{max-width:96vw;max-height:92vh;border-radius:8px}
+  .lb .x{position:fixed;top:14px;right:20px;font-size:34px;color:#fff;cursor:pointer;background:none;border:none}
+</style>
+</head>
+<body>
 <header>
-  <h1>Карточки товаров, которые продают</h1>
-  <p>Дизайн карточек для маркетплейсов: Wildberries, Ozon, Яндекс Маркет</p>
-  <div class="stats"><span>5 кейсов</span><span>5 стилей</span><span>19 карточек</span></div>
+  <h1>Портфолио карточек<br><span class="acc">для маркетплейсов</span></h1>
+  <p>Дизайн карточек товаров: Wildberries, Ozon, Avito</p>
+  <div class="counters"><span>5 кейсов</span><span>5 стилей</span><span>19 карточек</span></div>
 </header>
-<div class="services">
-  <div><b>Карточка товара</b><br>Обложка, преимущества, характеристики — полный комплект под ваш товар</div>
-  <div><b>Текстовый пакет</b><br>Описание, SEO-ключи, заголовки для ВБ и Озона — к каждой карточке</div>
-  <div><b>Стиль под нишу</b><br>Палитра и типографика под категорию: электроника, подарки, wellness</div>
-</div>
+<main>
+  <section class="case" id="case1">
+    <div class="badge">Кейс №1</div>
+    <h2 class="case-title">Геймпад Sony DualSense</h2>
+    <div class="grid">
+      <figure class="card" data-key="case1/1">
+        <img src="img/case1/1.png" alt="Кейс 1 — Обложка" loading="lazy">
+        <figcaption>Обложка</figcaption>
+      </figure>
+      <figure class="card" data-key="case1/2">
+        <img src="img/case1/2.png" alt="Кейс 1 — 5 причин выбрать" loading="lazy">
+        <figcaption>5 причин выбрать</figcaption>
+      </figure>
+      <figure class="card" data-key="case1/3">
+        <img src="img/case1/3.png" alt="Кейс 1 — Характеристики" loading="lazy">
+        <figcaption>Характеристики</figcaption>
+      </figure>
+    </div>
+    <div class="seo">
+      <div class="seo-title">Для маркетплейсов</div>
+      <p class="seo-desc">Оригинальный беспроводной геймпад для PlayStation 5 и ПК. Адаптивные триггеры, тактильный отклик, встроенный микрофон и динамик, зарядка USB-C. Новая, в заводской упаковке.</p>
+      <p class="seo-keys"><span class="seo-label">SEO-ключи:</span> dualsense, геймпад ps5, дуалсенс, джойстик плейстейшен 5, геймпад sony, ps5 контроллер</p>
+      <p class="seo-line"><span class="mp wb">Wildberries</span> <span class="seo-val">Геймпад Sony DualSense беспроводной для PlayStation 5, белый, оригинал</span></p>
+      <p class="seo-line"><span class="mp oz">Ozon</span> <span class="seo-val">Геймпад Sony DualSense для PlayStation 5 / PC — адаптивные триггеры, белый</span></p>
+    </div>
+  </section>
 
-<section class="case" id="case1">
-  <div class="case-head"><span class="case-tag">Кейс №1</span><h2>Геймпад Sony DualSense</h2><span class="case-style">Гейминг · контрастный</span></div>
-  <p class="case-desc">Беспроводной геймпад DualSense для PS5/PS5 Pro: адаптивные триггеры, тактильный отклик, микрофон и динамик, зарядка USB-C. Три карточки: обложка, «5 причин выбрать», характеристики.</p>
-  <div class="gallery"><img src="img/case1/1.png" alt="Кейс 1: Геймпад Sony DualSense — карточка 1" loading="lazy" onclick="lb(this)">
-<img src="img/case1/2.png" alt="Кейс 1: Геймпад Sony DualSense — карточка 2" loading="lazy" onclick="lb(this)">
-<img src="img/case1/3.png" alt="Кейс 1: Геймпад Sony DualSense — карточка 3" loading="lazy" onclick="lb(this)"></div>
-  <div class="seo-box">
-    <h3>Для маркетплейсов</h3>
-    <p><b>SEO-ключи:</b> dualsense, геймпад ps5, дуалсенс купить, джойстик плейстейшен 5, беспроводной контроллер sony, геймпад dualsense оригинал</p>
-    <p><b>Заголовок Wildberries:</b> Геймпад Sony DualSense беспроводной для PlayStation 5, белый, оригинал</p>
-    <p><b>Заголовок Ozon:</b> Геймпад Sony DualSense беспроводной для PlayStation 5 / PC — адаптивные триггеры, тактильный отклик, белый</p>
-  </div>
-</section>
+  <section class="case" id="case2">
+    <div class="badge">Кейс №2</div>
+    <h2 class="case-title">Наушники Sony PULSE Explore</h2>
+    <div class="grid">
+      <figure class="card" data-key="case2/1">
+        <img src="img/case2/1.png" alt="Кейс 2 — Обложка" loading="lazy">
+        <figcaption>Обложка</figcaption>
+      </figure>
+      <figure class="card" data-key="case2/2">
+        <img src="img/case2/2.png" alt="Кейс 2 — Почему эти наушники" loading="lazy">
+        <figcaption>Почему эти наушники</figcaption>
+      </figure>
+      <figure class="card" data-key="case2/3">
+        <img src="img/case2/3.png" alt="Кейс 2 — Работает везде" loading="lazy">
+        <figcaption>Работает везде</figcaption>
+      </figure>
+      <figure class="card" data-key="case2/4">
+        <img src="img/case2/4.png" alt="Кейс 2 — Зарядка без сюрпризов" loading="lazy">
+        <figcaption>Зарядка без сюрпризов</figcaption>
+      </figure>
+      <figure class="card" data-key="case2/5">
+        <img src="img/case2/5.png" alt="Кейс 2 — Характеристики" loading="lazy">
+        <figcaption>Характеристики</figcaption>
+      </figure>
+    </div>
+    <div class="seo">
+      <div class="seo-title">Для маркетплейсов</div>
+      <p class="seo-desc">Беспроводные игровые наушники с Lossless-звуком и шумоподавлением. Работают с PS5, ПК и мобильными через беспроводной адаптер. Долгое время работы без подзарядки.</p>
+      <p class="seo-keys"><span class="seo-label">SEO-ключи:</span> pulse explore, наушники ps5, игровые наушники с микрофоном, sony наушники беспроводные</p>
+      <p class="seo-line"><span class="mp wb">Wildberries</span> <span class="seo-val">Наушники Sony PULSE Explore беспроводные для PlayStation 5 и ПК, белый</span></p>
+      <p class="seo-line"><span class="mp oz">Ozon</span> <span class="seo-val">Наушники Sony PULSE Explore — Lossless-звук, для PS5, ПК и мобильных</span></p>
+    </div>
+  </section>
 
-<section class="case" id="case2">
-  <div class="case-head"><span class="case-tag">Кейс №2</span><h2>Наушники Sony PULSE Explore</h2><span class="case-style">Гейминг · тёмно-синий</span></div>
-  <p class="case-desc">Беспроводные игровые наушники с Lossless-звуком: до 5 часов работы, 15 часов с кейсом, быстрая зарядка. Работают с PS5, ПК и мобильными.</p>
-  <div class="gallery"><img src="img/case2/1.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 1" loading="lazy" onclick="lb(this)">
-<img src="img/case2/2.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 2" loading="lazy" onclick="lb(this)">
-<img src="img/case2/3.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 3" loading="lazy" onclick="lb(this)">
-<img src="img/case2/4.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 4" loading="lazy" onclick="lb(this)">
-<img src="img/case2/5.png" alt="Кейс 2: Наушники Sony PULSE Explore — карточка 5" loading="lazy" onclick="lb(this)"></div>
-  <div class="seo-box">
-    <h3>Для маркетплейсов</h3>
-    <p><b>SEO-ключи:</b> наушники sony pulse explore, беспроводные наушники ps5, игровые наушники с микрофоном, pulse explore купить, наушники для плейстейшен 5</p>
-    <p><b>Заголовок Wildberries:</b> Наушники Sony PULSE Explore беспроводные для PlayStation 5 и ПК, белый</p>
-    <p><b>Заголовок Ozon:</b> Наушники Sony PULSE Explore беспроводные — Lossless-звук, для PS5, ПК и мобильных, белый</p>
-  </div>
-</section>
+  <section class="case" id="case3">
+    <div class="badge">Кейс №3</div>
+    <h2 class="case-title">PlayStation 5 Pro Digital</h2>
+    <div class="grid">
+      <figure class="card" data-key="case3/1">
+        <img src="img/case3/1.png" alt="Кейс 3 — Обложка" loading="lazy">
+        <figcaption>Обложка</figcaption>
+      </figure>
+      <figure class="card" data-key="case3/2">
+        <img src="img/case3/2.png" alt="Кейс 3 — Что в коробке" loading="lazy">
+        <figcaption>Что в коробке</figcaption>
+      </figure>
+      <figure class="card" data-key="case3/3">
+        <img src="img/case3/3.png" alt="Кейс 3 — Геймпад DualSense" loading="lazy">
+        <figcaption>Геймпад DualSense</figcaption>
+      </figure>
+      <figure class="card" data-key="case3/4">
+        <img src="img/case3/4.png" alt="Кейс 3 — Почему Pro" loading="lazy">
+        <figcaption>Почему Pro</figcaption>
+      </figure>
+      <figure class="card" data-key="case3/5">
+        <img src="img/case3/5.png" alt="Кейс 3 — Характеристики" loading="lazy">
+        <figcaption>Характеристики</figcaption>
+      </figure>
+    </div>
+    <div class="seo">
+      <div class="seo-title">Для маркетплейсов</div>
+      <p class="seo-desc">Флагманская консоль Sony: 2 ТБ SSD, до +67% производительности GPU, апскейлинг PSSR, 4K 120 Гц, Wi-Fi 7. В комплекте геймпад DualSense, кабели HDMI и USB-C, руководство.</p>
+      <p class="seo-keys"><span class="seo-label">SEO-ключи:</span> пс5 про, плейстейшен 5 про, консоль sony, playstation 5 pro, ps5 pro digital</p>
+      <p class="seo-line"><span class="mp wb">Wildberries</span> <span class="seo-val">Игровая консоль Sony PlayStation 5 Pro Digital, 2 ТБ SSD, белый</span></p>
+      <p class="seo-line"><span class="mp oz">Ozon</span> <span class="seo-val">PlayStation 5 Pro Digital 2 ТБ — PSSR, 4K 120 Гц, Wi-Fi 7</span></p>
+    </div>
+  </section>
 
-<section class="case" id="case3">
-  <div class="case-head"><span class="case-tag">Кейс №3</span><h2>PlayStation 5 Pro</h2><span class="case-style">Гейминг · светлый</span></div>
-  <p class="case-desc">Консоль PS5 Pro Digital Edition: 2 ТБ SSD, PSSR-апскейлинг, 4K 120 Гц, Wi-Fi 7, +67% к мощности GPU. В коробке консоль, DualSense, кабели и документация.</p>
-  <div class="gallery"><img src="img/case3/1.png" alt="Кейс 3: PlayStation 5 Pro — карточка 1" loading="lazy" onclick="lb(this)">
-<img src="img/case3/2.png" alt="Кейс 3: PlayStation 5 Pro — карточка 2" loading="lazy" onclick="lb(this)">
-<img src="img/case3/3.png" alt="Кейс 3: PlayStation 5 Pro — карточка 3" loading="lazy" onclick="lb(this)">
-<img src="img/case3/4.png" alt="Кейс 3: PlayStation 5 Pro — карточка 4" loading="lazy" onclick="lb(this)">
-<img src="img/case3/5.png" alt="Кейс 3: PlayStation 5 Pro — карточка 5" loading="lazy" onclick="lb(this)"></div>
-  <div class="seo-box">
-    <h3>Для маркетплейсов</h3>
-    <p><b>SEO-ключи:</b> playstation 5 pro, пс5 про, консоль sony ps5 pro, плейстейшен 5 про digital, ps5 pro 2tb, купить пс5 про</p>
-    <p><b>Заголовок Wildberries:</b> Игровая консоль Sony PlayStation 5 Pro Digital, 2 ТБ SSD, белый</p>
-    <p><b>Заголовок Ozon:</b> Игровая консоль Sony PlayStation 5 Pro Digital Edition 2 ТБ — PSSR, 4K 120 Гц, Wi-Fi 7, белый</p>
-  </div>
-</section>
+  <section class="case" id="case4">
+    <div class="badge">Кейс №4</div>
+    <h2 class="case-title">Массажёр Fujimo IN·YANG F158</h2>
+    <div class="grid">
+      <figure class="card" data-key="case4/1">
+        <img src="img/case4/1.png" alt="Кейс 4 — Обложка" loading="lazy">
+        <figcaption>Обложка</figcaption>
+      </figure>
+      <figure class="card" data-key="case4/2">
+        <img src="img/case4/2.png" alt="Кейс 4 — Почему IN·YANG" loading="lazy">
+        <figcaption>Почему IN·YANG</figcaption>
+      </figure>
+      <figure class="card" data-key="case4/3">
+        <img src="img/case4/3.png" alt="Кейс 4 — Характеристики" loading="lazy">
+        <figcaption>Характеристики</figcaption>
+      </figure>
+    </div>
+    <div class="seo">
+      <div class="seo-title">Для маркетплейсов</div>
+      <p class="seo-desc">Массажёр для ног 2-в-1: роликовый массаж стоп и компрессия 360°, подогрев в 2 зонах, мощность 65 Вт. Полноценный сеанс массажа дома — для стоп и икр.</p>
+      <p class="seo-keys"><span class="seo-label">SEO-ключи:</span> массажер для ног, массажер стоп и икр, компрессионный массажер, fujimo ин янь</p>
+      <p class="seo-line"><span class="mp wb">Wildberries</span> <span class="seo-val">Массажер для ног Fujimo IN·YANG F158, стопы и икры, роликовый и компрессионный</span></p>
+      <p class="seo-line"><span class="mp oz">Ozon</span> <span class="seo-val">Массажер для ног Fujimo IN·YANG F158 2-в-1 — ролики, компрессия 360°, подогрев, 65 Вт</span></p>
+    </div>
+  </section>
 
-<section class="case" id="case4">
-  <div class="case-head"><span class="case-tag">Кейс №4</span><h2>Массажёр Fujimo IN·YANG F158</h2><span class="case-style">Wellness · кремово-оливковый</span></div>
-  <p class="case-desc">Массажёр для ног 2-в-1: роликовый массаж стоп (3 акупунктурных барабана) и воздушно-компрессионный охват 360°, тепловая терапия в 2 зонах, 3 программы и 3 уровня интенсивности, 65 Вт.</p>
-  <div class="gallery"><img src="img/case4/1.png" alt="Кейс 4: Массажёр Fujimo IN·YANG F158 — карточка 1" loading="lazy" onclick="lb(this)">
-<img src="img/case4/2.png" alt="Кейс 4: Массажёр Fujimo IN·YANG F158 — карточка 2" loading="lazy" onclick="lb(this)">
-<img src="img/case4/3.png" alt="Кейс 4: Массажёр Fujimo IN·YANG F158 — карточка 3" loading="lazy" onclick="lb(this)"></div>
-  <div class="seo-box">
-    <h3>Для маркетплейсов</h3>
-    <p><b>SEO-ключи:</b> массажер для ног, массажер стоп и икр, fujimo in yang f158, роликовый массажер для ног, компрессионный массажер ног, массажер с подогревом</p>
-    <p><b>Заголовок Wildberries:</b> Массажер для ног Fujimo IN·YANG F158, стопы и икры, роликовый и компрессионный</p>
-    <p><b>Заголовок Ozon:</b> Массажер для ног Fujimo IN·YANG F158 2-в-1 — роликовый и воздушно-компрессионный массаж, подогрев, 65 Вт</p>
-  </div>
-</section>
-
-<section class="case" id="case5">
-  <div class="case-head"><span class="case-tag">Кейс №5</span><h2>Коньячный набор Златоуст</h2><span class="case-style">Подарок · чёрно-золотой</span></div>
-  <p class="case-desc">Коньячный набор из Златоуста: штоф и три бокала с фианитами, чешское стекло, ручная гравюра и золочение. Гравировка до 64 символов по запросу, подарочная упаковка, артикул zlat-1078.</p>
-  <div class="gallery"><img src="img/case5/1.png" alt="Кейс 5: Коньячный набор Златоуст — карточка 1" loading="lazy" onclick="lb(this)">
-<img src="img/case5/2.png" alt="Кейс 5: Коньячный набор Златоуст — карточка 2" loading="lazy" onclick="lb(this)">
-<img src="img/case5/3.png" alt="Кейс 5: Коньячный набор Златоуст — карточка 3" loading="lazy" onclick="lb(this)"></div>
-  <div class="seo-box">
-    <h3>Для маркетплейсов</h3>
-    <p><b>SEO-ключи:</b> коньячный набор, набор для коньяка златоуст, штоф и бокалы для коньяка, подарок мужчине ручная работа, бокалы с гравировкой, коньячный набор подарок</p>
-    <p><b>Заголовок Wildberries:</b> Коньячный набор: штоф и 3 бокала с фианитами, Златоуст, ручная работа</p>
-    <p><b>Заголовок Ozon:</b> Коньячный набор из Златоуста — штоф и 3 бокала с фианитами, чешское стекло, ручная гравюра, гравировка на подарок</p>
-  </div>
-</section>
+  <section class="case" id="case5">
+    <div class="badge">Кейс №5</div>
+    <h2 class="case-title">Коньячный набор из Златоуста</h2>
+    <div class="grid">
+      <figure class="card" data-key="case5/1">
+        <img src="img/case5/1.png" alt="Кейс 5 — Обложка" loading="lazy">
+        <figcaption>Обложка</figcaption>
+      </figure>
+      <figure class="card" data-key="case5/2">
+        <img src="img/case5/2.png" alt="Кейс 5 — Почему это подарок №1" loading="lazy">
+        <figcaption>Почему это подарок №1</figcaption>
+      </figure>
+      <figure class="card" data-key="case5/3">
+        <img src="img/case5/3.png" alt="Кейс 5 — Характеристики" loading="lazy">
+        <figcaption>Характеристики</figcaption>
+      </figure>
+    </div>
+    <div class="seo">
+      <div class="seo-title">Для маркетплейсов</div>
+      <p class="seo-desc">Штоф и три бокала с фианитами: чешское стекло, ручная гравюра и золочение мастеров Златоуста, гравировка до 64 символов по запросу. Подарочная упаковка — готов к вручению.</p>
+      <p class="seo-keys"><span class="seo-label">SEO-ключи:</span> коньячный набор, штоф и бокалы, подарок мужчине ручная работа, златоуст набор</p>
+      <p class="seo-line"><span class="mp wb">Wildberries</span> <span class="seo-val">Коньячный набор: штоф и 3 бокала с фианитами, Златоуст, ручная работа</span></p>
+      <p class="seo-line"><span class="mp oz">Ozon</span> <span class="seo-val">Коньячный набор из Златоуста — штоф и 3 бокала с фианитами, чешское стекло, гравировка</span></p>
+    </div>
+  </section>
+</main>
 <footer>
-  <p style="margin-bottom:16px;color:#9a9a9a">Нужна такая же карточка для вашего товара?</p>
-  <a href="https://t.me/yan154rus" target="_blank">Написать в Telegram @yan154rus</a>
+  <a class="tg" href="https://t.me/yan154rus">Написать в Telegram @yan154rus</a>
+  <p>Каждая карточка — под ключ: структура, тексты, инфографика</p>
 </footer>
-</div>
-<div id="lb" onclick="this.style.display='none'"><img id="lbimg"></div>
+<div class="lb" id="lb"><button class="x" onclick="document.getElementById('lb').classList.remove('open')">&times;</button><img id="lbimg" alt=""></div>
 <script>
-function lb(el){document.getElementById('lbimg').src=el.src;document.getElementById('lb').style.display='flex';}
+(function(){
+  var REPO='yan154rus/vitrina';
+  function pathsFor(){/* пробуем main и master */
+    var brs=['main','master'],i=0;
+    function step(){
+      if(i>=brs.length) return Promise.resolve(null);
+      return fetch('https://api.github.com/repos/'+REPO+'/git/trees/'+brs[i++]+'?recursive=1')
+        .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+        .then(function(j){ if(j&&j.tree) return j.tree.map(function(x){return x.path;}); throw 0; })
+        .catch(step);
+    }
+    return step();
+  }
+  function find(list,key){
+    var parts=key.split('/'), n=parts[0], m=parts[1];
+    var re=new RegExp('(?:^|/)\\s*'+n+'\\s*/\\s*'+m+'\\.(png|jpe?g|webp)$','i');
+    for(var i=0;i<list.length;i++){ if(re.test(list[i])) return list[i]; }
+    return null;
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var imgs=[].slice.call(document.querySelectorAll('img[data-key]'));
+    pathsFor().then(function(list){
+      imgs.forEach(function(img){
+        img.onerror=function(){
+          /* запасные пути, если API недоступен */
+          var key=img.getAttribute('data-key');
+          var alts=['./img/'+key+'.png','img/'+key+'.png','/vitrina/img/'+key+'.png',
+                    'IMG/'+key.replace('case','Case')+'.PNG','img/'+key+'.jpg','img/'+key+'.webp'];
+          img.onerror=null; img.src=alts.shift()||img.src;
+        };
+        if(list){ var hit=find(list,img.getAttribute('data-key')); if(hit) img.src=encodeURI(hit); }
+      });
+    });
+    /* лайтбокс */
+    imgs.forEach(function(img){
+      img.addEventListener('click',function(){
+        var lb=document.getElementById('lb'), li=document.getElementById('lbimg');
+        li.src=img.currentSrc||img.src; lb.classList.add('open');
+      });
+    });
+    document.getElementById('lb').addEventListener('click',function(e){
+      if(e.target.id!=='lbimg') e.currentTarget.classList.remove('open');
+    });
+  });
+})();
 </script>
-</body></html>
+</body>
+</html>
